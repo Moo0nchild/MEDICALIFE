@@ -1,0 +1,8 @@
+{
+    "patients": [
+      { "id": 1, "name": "Paciente 1" },
+      { "id": 2, "name": "Paciente 2" },
+      { "id": 3, "name": "Paciente 3" }
+    ]
+  }
+  

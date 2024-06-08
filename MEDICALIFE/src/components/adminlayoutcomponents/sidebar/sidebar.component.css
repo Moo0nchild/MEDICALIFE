@@ -1,0 +1,187 @@
+.logo img{
+    margin: 0 auto;
+}
+.logo{
+    background-color: transparent;
+}
+.logo-colapsed{
+    width: 100px;
+    background-color: transparent;
+}
+.sidebar{
+    height: 90% !important;
+}
+
+.sidebar-wrapper .nav li > div > div > a:hover{
+    color: #1A948D;
+    box-shadow: none;
+    background-color: rgba(228, 228, 228, 0.185);
+    margin-top: 2px 2px 2px 2px;
+}
+.sidebar-wrapper .nav {
+    color: #fff;
+    box-shadow: none;
+    font-size: 16px;
+}
+.sidebar-wrapper .nav p{
+    font-size: 16px;
+    margin-top: -10px;
+}
+
+.sidebar-wrapper #sidebar{
+   background: rgb(255, 255, 255)  !important;
+}
+
+.sidebar-wrapper {
+    background-color: #fff ;
+    overflow: scroll;
+}
+
+.logo-img-new{
+    width: 100px;
+    display: block;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 0;
+}
+.logo-img-new img{
+    width: 100px;
+}
+.subroutes .active {
+    background:#1A948D !important;
+    color: white !important;
+}
+.subroutes .active p {
+   color: white !important;
+}
+.sidebarcondesed .subroutes {
+    text-align: center;
+}
+
+.sidebarcondesed .flechas-size{
+    display: none;
+}
+
+.icons-letras{
+    margin-right: 0px !important;
+}
+
+.subroutes a {
+    padding: 7px 15px;
+}
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+    
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #7b7b7b;
+}
+
+.material-icons-letras{
+    font-size: 46px !important;
+    color: #1A948D!important;
+    font-weight:600;
+    font-style: normal;
+}
+
+.material-icons-letras:hover{
+    color: #1A948D !important;
+}
+
+em.flechas-size {
+    font-size: 12px !important;
+    color: #22201f
+}
+
+.nav-nombre-usuario img{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;  
+}
+.nav-nombre-usuario {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px !important;
+    color: rgb(255, 255, 255);
+    margin-left: 10PX;
+    cursor: pointer;
+}
+a.nav-nombre-usuario {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px !important;
+    color: rgb(255, 255, 255);
+    margin-left: 10PX;
+    cursor: pointer;
+}
+a.nav-nombre-usuario:hover {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px !important;
+    color: rgb(255, 255, 255);
+    margin-left: 10PX;
+    cursor: pointer;
+}
+
+.info-profile{
+    margin: 10px 10px 10px 10px;
+    border-bottom-style: solid;
+    border-bottom-color: hsla(0, 3%, 85%, 0.3);
+    border-top-style: solid;
+    border-top-color: hsla(0, 3%, 85%, 0.3);
+}
+.info-profile img{
+    margin: 10px 10px 10px 10px;
+}
+
+.jarvis-text{
+    width:7px;
+}
+
+.greeting-first , .greeting-second, .info-user{
+    color:#3A5A89
+}
+
+.greeting-second{
+    font-weight: bold;
+}
+
+.info-user{
+    font-size: 12px;
+}
+
+.email-user{
+    color: #717170;
+    margin-top: -8px;
+}
+
+.options-user{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.options-user > em{
+    cursor: pointer;
+}
+

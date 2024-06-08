@@ -1,0 +1,136 @@
+.logo img{
+    max-width: 85%;
+    max-height: 85%;
+    display: block;
+    margin: 0 auto;
+}
+.logo{
+    width: 180px;
+    margin-left: 20px;
+}
+.logo-colapsed{
+  width: 100px;
+  background-color: transparent;
+}
+
+.navbar{
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  backdrop-filter:  saturate(200%) blur(5px);
+  color: #fff;
+  background-color: #1a948de3 !important;
+  font-size: 20px;
+}
+
+.nav-item{
+    cursor: pointer;
+}
+
+#boton-menu-colapso{
+    background-color:transparent !important;
+    cursor: pointer;
+}
+#boton-menu-colapso i{
+    font-size: 24px !important;
+}
+.espacio-icon{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.espacio-iconos{
+    font-size: 24px !important;
+    margin-left: 4px; 
+    margin-top: 3px;
+}
+.nav-nombre-usuario{
+    margin-left: 1px; 
+    margin-top: 3px; 
+    width: 160px;
+    text-align: center !important;
+    text-transform: capitalize !important;
+    font-size: 14px !important;
+}
+.navbar-wrapper {
+    display: flex;
+    justify-content: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;  
+    background-color: #5d5e5f0a; 
+    margin-left: 10px;
+}
+div.navbar-wrapper 
+a.navbar-brand  {
+  font-size: 14px !important;
+  margin-left: 20px; 
+  margin-top: -10px;
+  cursor: pointer;
+  word-spacing: 5px;
+}
+.navbar-brand em {
+  font-size: 14px !important;
+  margin-top: -7px;
+  padding-bottom: 7px;
+  margin-bottom: 7px;
+}
+
+.navbar-brand em.fa.fa-home {
+  font-size: 14px !important;
+}
+.navbar-brands {
+  height: 30%;
+  position: absolute;
+  top: 50%;
+  margin: 0 auto;
+}
+.navbar-brands p {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px !important;
+  
+}
+
+div span.only-show-on-hover {
+  visibility: hidden;
+}
+div:hover span.only-show-on-hover  {
+  visibility: visible;
+}
+.navbar-toggler-icon.material-icons{
+  margin: -12px auto;
+}
+
+.icon-rocketchat{
+  text-decoration: none;
+  color: #fff
+}
+
+.icon-zentir{
+  margin-top: -5px; 
+  margin-left: 5px; 
+  width: 30px !important;
+}
+
+.notificationsBar{
+  max-height: 87%;
+  overflow-y: auto;
+  background-color: white;
+  position: fixed;
+  top: 4.5em;
+  right: 0px;
+  z-index: 999;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.imageZentir {
+  width: 39px !important;
+}
+
+.imageHiwork {
+  width: 35px !important;
+}

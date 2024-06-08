@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const AddPatientForm = ({ onClose, onAddPatient }) => {
+  const [cedula, setCedula] = useState('');
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [fechaNacimiento, setFechaNacimiento] = useState('');
@@ -11,13 +12,22 @@ const AddPatientForm = ({ onClose, onAddPatient }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddPatient({ nombre, apellido, fechaNacimiento, genero, direccion, telefono, email });
+    onAddPatient({ cedula, nombre, apellido, fechaNacimiento, genero, direccion, telefono, email });
     onClose();
   };
 
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
+        <div>
+          <label>Cédula:</label>
+          <input 
+            type="text" 
+            value={cedula} 
+            onChange={(e) => setCedula(e.target.value)} 
+            required 
+          />
+        </div>
         <div>
           <label>Nombre:</label>
           <input 

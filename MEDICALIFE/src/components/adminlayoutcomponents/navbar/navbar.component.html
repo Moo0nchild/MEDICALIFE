@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
+    <div class="container-fluid">
+        <button mat-raised-button class="navbar-toggler animate" type="button" (click)="sidebarToggle()">
+            <span class="sr-only" i18n>Colapsar navegacion</span>
+            <em class="navbar-toggler-icon material-icons">view_list</em>
+        </button>
+
+        <div *ngIf="!isMobileMenu()">
+
+            <button mat-icon-button (click)="condenseMenu()" aria-label="Fijar despegar menú lateral"
+                matTooltip="{{ fullMenu ? 'Expandir o contraer' : 'Fijar menú' }}" class="icon-menu">
+                <mat-icon *ngIf="!fullMenu">menu</mat-icon>
+                <mat-icon *ngIf="fullMenu">menu_open</mat-icon>
+            </button>
+        </div>
+
+        <img id="logo-mini" *ngIf="isMobileMenu()" src="assets/img/brands/jarvis_abraza.png" width="110"
+            alt="imagen-sidebar-background-colapsado" />
+        <div class="navbar-wrapper">
+            <a class="navbar-brand" (click)="dispararFuncion()"> <em class="fa fa-home"></em> {{getRutas() | translate
+                }} / </a>
+            <div class="navbar-brands">
+                <p class=""> {{getTitle() | translate }} </p>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <ul class="navbar-nav espacio-icon">
+                <li class="nav-item mx-2 px-1">
+                    <a  href="{{urlRocketchat}}" rel="noopener noreferrer"  target="_blank" class="icon-rocketchat"> 
+                        <em class="fab fa-rocketchat espacio-iconos" matTooltip="{{'Iniciar Chat' | translate}}" ></em>
+                    </a>
+                </li>
+                <li *ngIf="isEnableFeatureFlagZentir && permissionsService.validateAction('722')" class="nav-item mx-2 px-1">
+                    <a  (click)="startZentir(true)" rel="noopener noreferrer"  target="_blank" class="icon-rocketchat"> 
+                        <em class="icon-zentir" matTooltip="Emocion Zentir" >
+                            <img [src]="image" *ngIf="image" alt="" class="imageZentir" data-toggle="tooltip" data-placement="top"> 
+                            <img src="assets/img/custom-icons/zentir_incognita.gif" [hidden]="image || isEnableLogoChange" alt="" class="imageZentir" data-toggle="tooltip" data-placement="top">  
+                            <img src="assets/img/custom-icons/icono-hiwork.png" [hidden]="image || !isEnableLogoChange"  alt="" class="imageHiwork" data-toggle="tooltip" data-placement="top"/>
+                        </em>
+                        
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" matTooltip="{{'Iniciar simulacion' | translate}}" *ngIf="!isSimulate"
+                        (click)="startSimulation()">
+                        <em class="fa fa-user-secret espacio-iconos"></em>
+                    </a>
+                    <a class="nav-link" matTooltip="{{'Terminar simulacion' | translate}}" *ngIf="isSimulate"
+                        (click)="exitSimulation()">
+                        <em class="material-icons">streetview</em>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a i18n-matTooltip matTooltip="Notificaciones" class="nav-link" (click)="getNotifications(clickNotification)">
+                        <em class="fa fa-bell espacio-iconos" [style.color] = "NotificationsService.colorBell"><sub>{{NotificationsService.notificationsCount}}</sub></em> 
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a matTooltip="{{'salir' | translate }}" class="nav-link" (click)="Logout()" title="Cerrar Sesión">
+                        <em class="material-icons espacio-iconos">exit_to_app</em> 
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="notificationsBar" *ngIf="showNotificationsBar">
+    <app-modal-view-notifications-client></app-modal-view-notifications-client>
+</div>

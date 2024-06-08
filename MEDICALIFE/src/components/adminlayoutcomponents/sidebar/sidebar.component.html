@@ -1,0 +1,85 @@
+<div class="sidebar-wrapper" (mouseleave)="onLeave($event)"  (mouseenter)="onEnter($event)"   >
+    <div class="logo logo-text" *ngIf="isMobileMenu() != true">
+        <img class="jarvis-text" src="assets/img/brands/logo_jarvis_login.png" alt="imagen-sidebar-background" />
+    </div>
+    <div class="logo-mini" *ngIf="isMobileMenu() != true">
+        <img id="logo-mini" src="assets/img/logobienvenido.png" width="50" alt="imagen-sidebar-background-colapsado" />
+    </div>
+    <div id="user-info" class="logo logo-user" *ngIf="isMobileMenu() != true">
+        <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center center">
+            <div fxLayout="row wrap" fxFlex="40" fxFlexOffset="10" fxLayoutAlign="center center">
+                <img class="jarvis-text" src="assets/img/brands/logo_only_jarvis_pequeno.png" alt="imagen-sidebar-background" />
+            </div>
+            <div fxLayout="row wrap" fxFlex="50" fxLayoutAlign="start center">
+                <div>
+                    <span class="greeting-first">¡Hola</span><br>
+                    <span class="greeting-second">{{userInfo.name}}!</span>
+                </div>
+            </div>
+            <div class="info-user" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center center">
+                <span class="info-user">{{userInfo.nombre_cargo}}</span>
+            </div>
+            <div class="info-user" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center center">
+                <span class="email-user">{{userInfo.email_corporativo}}</span>
+            </div>
+            <div class="info-user options-user" *ngIf="showUpdatePersonalData" fxLayoutGap="15px" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center center">
+                <a class="" [routerLink]="['/profile/actualizar-datos/']" matTooltip="Actualizacion de Datos"
+                aria-label="Actualizacion de Datos"> <em class="far fa-edit"></em> </a>  
+            </div>
+        </div>
+
+    </div>
+    <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems; let i=index"
+            class="{{menuItem.class}} nav-item">
+
+            <a class="nav-link" rel="noopener noreferrer" target="_blank" [href]="menuItem.external_url" *ngIf="menuItem.subroutes.length==0 && menuItem.external_url !== undefined && validateMenu(menuItem)"
+                (click)="cleanItemActive($event)">
+                <em class="material-icons" *ngIf="menuItem.typeIcon == 'mat'">{{menuItem.icon}} </em>
+                <em class="{{menuItem.icon}}" *ngIf="menuItem.typeIcon == 'fa'"></em>
+                <p>{{ menuItem.title | translate }} </p>
+            </a>
+            <a class="nav-link" [routerLink]="[menuItem.path]" *ngIf="menuItem.subroutes.length==0 && menuItem.external_url === undefined  && validateMenu(menuItem)"
+                (click)="cleanItemActive($event)">
+                <em class="material-icons" *ngIf="menuItem.typeIcon == 'mat'">{{menuItem.icon}} </em>
+                <em class="{{menuItem.icon}}" *ngIf="menuItem.typeIcon == 'fa'"></em>
+                <p>{{ menuItem.title | translate }} </p>
+            </a>
+            
+            <a class="nav-link fadeIn fast-animation"  *ngIf="menuItem.subroutes.length>0  && validateMenu(menuItem)"
+                (click)="itemActive(menuItem.viewsubroutes,i)">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 d-flex justify-content-start">
+                        <em class="material-icons" *ngIf="menuItem.typeIcon == 'mat'">{{menuItem.icon}} </em>
+                        <em class="{{menuItem.icon}}" *ngIf="menuItem.typeIcon == 'fa'"></em>
+                        <p>{{menuItem.title | translate}}</p>
+                    </div>
+                    <div class="col-lg-2 d-flex justify-content-center ">
+                        <div class="animated  animated fadeIn fast-animation"  *ngIf="menuItem.viewsubroutes">
+                             <em class="fas fa-chevron-up flechas-size"></em>
+                        </div>
+                        <div class="animated  animated fadeIn fast-animation"  *ngIf="!menuItem.viewsubroutes">
+                             <em class="fas fa-chevron-down fadeIn flechas-size"></em>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <div *ngIf="menuItem.viewsubroutes">
+                <div *ngFor="let subroute of menuItem.subroutes" class="subroutes">
+                    <a routerLinkActive="active"  class="nav-link animated fadeIn fast-animation" [routerLink]="[subroute.path]" *ngIf="validateItem(subroute) && subroute.external_url === undefined  && subroute.letra !== undefined">
+                        <em class="material-icons" *ngIf="subroute.typeIcon == 'mat' && subroute.letra == undefine ">{{subroute.icon}} </em>
+                        <em class="{{subroute.icon}}" *ngIf="subroute.typeIcon == 'fa' && subroute.letra == undefine "></em>
+                        <em class="icons-letras" ><p class="material-icons-letras" *ngIf="subroute.letra != undefine ">{{subroute.letra | translate }}</p></em>
+                        <p>{{subroute.title | translate }}</p>
+                    </a>
+                    <a routerLinkActive="active"  class="nav-link animated fadeIn fast-animation" [href]="subroute.external_url" [target]="subroute.target" *ngIf="validateItem(subroute) && subroute.external_url !== undefined && subroute.letra !== undefined" >
+                        <em class="material-icons" *ngIf="subroute.typeIcon == 'mat' && subroute.letra == undefine ">{{subroute.icon}} </em>
+                        <em class="{{subroute.icon}}" *ngIf="subroute.typeIcon == 'fa' && subroute.letra == undefine "></em>
+                        <em class="icons-letras" ><p class="material-icons-letras" *ngIf="subroute.letra != undefine ">{{subroute.letra | translate }}</p></em>
+                        <p>{{subroute.title | translate }}</p>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -19,7 +19,7 @@ app.use('/api', patientRoutes);
 app.use('/api', medicRoutes);
 app.use('/api', specialtyRoutes);
 app.use('/api', appointmentRoutes);
-
+app.use('/api/citas', citaRoutes);
 sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

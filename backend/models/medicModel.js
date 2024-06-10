@@ -17,7 +17,7 @@ const Medic = sequelize.define('Medic', {
     allowNull: false
   }
 }, {
-  tableName: 'medics'
+  tableName: 'Medicos'
 });
 
 module.exports = Medic;

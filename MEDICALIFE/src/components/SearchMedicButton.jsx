@@ -1,3 +1,4 @@
+// components/SearchMedicButton.js
 import React, { useState } from 'react';
 
 const SearchMedicButton = ({ onSearch }) => {
@@ -9,8 +10,9 @@ const SearchMedicButton = ({ onSearch }) => {
   };
 
   const handleChange = (e) => {
-    // Actualizamos el estado del texto de búsqueda cuando cambia la texbox
+    // Actualizamos el estado del texto de búsqueda cuando cambia el textbox
     setSearchText(e.target.value);
+    handleSearch(); // Realizar búsqueda automáticamente al cambiar el texto
   };
 
   return (
@@ -25,6 +27,6 @@ const SearchMedicButton = ({ onSearch }) => {
       <button onClick={handleSearch}>Buscar</button>
     </div>
   );
-}
+};
 
 export default SearchMedicButton;

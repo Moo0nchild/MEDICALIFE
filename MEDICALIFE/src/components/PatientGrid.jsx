@@ -1,3 +1,4 @@
+// components/PatientGrid.js
 import React, { useState, useEffect } from 'react';
 import patientService from '../services/patientService';
 import SearchPatientButton from './SearchPatientButton';
@@ -50,14 +51,14 @@ const PatientGrid = () => {
         <tbody>
           {filteredPatients.map((patient, index) => (
             <tr key={index}>
-              <td>{patient.userID}</td>
-              <td>{patient.nombre}</td>
-              <td>{patient.apellido}</td>
-              <td>{patient.fechaNacimiento}</td>
-              <td>{patient.genero}</td>
-              <td>{patient.direccion}</td>
-              <td>{patient.telefono}</td>
-              <td>{patient.email}</td>
+              <td>{patient.UserID}</td>
+              <td>{patient.Nombre}</td>
+              <td>{patient.Apellido}</td>
+              <td>{patient.FechaNacimiento}</td>
+              <td>{patient.Genero}</td>
+              <td>{patient.Direccion}</td>
+              <td>{patient.Telefono}</td>
+              <td>{patient.Email}</td>
             </tr>
           ))}
         </tbody>

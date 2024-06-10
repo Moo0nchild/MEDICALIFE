@@ -28,8 +28,9 @@ exports.addDoctor = async (req, res) => {
 exports.getAllMedics = async (req, res) => {
   try {
     const medics = await Medic.findAll();
-    res.status(200).json(medics);
+    res.json(medics);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Error fetching medics:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };

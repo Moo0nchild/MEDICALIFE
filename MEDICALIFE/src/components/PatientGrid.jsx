@@ -1,39 +1,39 @@
-// PatientGrid.js
 import React, { useState, useEffect } from 'react';
-import patientsService from '../services/patientService';
+import patientService from '../services/patientService';
+import SearchPatientButton from './SearchPatientButton';
 
 const PatientGrid = () => {
   const [patients, setPatients] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [filteredPatients, setFilteredPatients] = useState([]);
 
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const data = await patientsService.getPatients();
-        setPatients(data);
-        setLoading(false);
+        const patientsData = await patientService.getAllPatients();
+        setPatients(patientsData);
+        setFilteredPatients(patientsData); // Inicialmente, mostrar todos los pacientes
       } catch (error) {
         console.error('Error fetching patients:', error);
-        setError('Error al cargar los pacientes. Inténtelo de nuevo más tarde.');
-        setLoading(false);
       }
     };
 
     fetchPatients();
   }, []);
 
-  if (loading) {
-    return <div>Cargando...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  const handleSearch = (searchText) => {
+    const lowercasedFilter = searchText.toLowerCase();
+    const filteredData = patients.filter(patient =>
+      Object.keys(patient).some(key =>
+        String(patient[key]).toLowerCase().includes(lowercasedFilter)
+      )
+    );
+    setFilteredPatients(filteredData);
+  };
 
   return (
     <div>
       <h2>Lista de Pacientes</h2>
+      <SearchPatientButton onSearch={handleSearch} />
       <table>
         <thead>
           <tr>
@@ -48,7 +48,7 @@ const PatientGrid = () => {
           </tr>
         </thead>
         <tbody>
-          {patients.map((patient, index) => (
+          {filteredPatients.map((patient, index) => (
             <tr key={index}>
               <td>{patient.userID}</td>
               <td>{patient.nombre}</td>

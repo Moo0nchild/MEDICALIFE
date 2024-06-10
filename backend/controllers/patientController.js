@@ -32,11 +32,11 @@ exports.addPatient = async (req, res) => {
 
 exports.getAllPatients = async (req, res) => {
   try {
-    const users = await Usuario.findAll();
-    res.json(users);
+    const [results, metadata] = await sequelize.query("SELECT * FROM Usuarios");
+    res.json(results);
   } catch (error) {
-    console.error('Error fetching users:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+    console.error('Error fetching patients:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 

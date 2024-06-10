@@ -5,7 +5,6 @@ const sequelize = require('../config/db');
 const Medic = sequelize.define('Medic', {
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true
   },
   nombre: {

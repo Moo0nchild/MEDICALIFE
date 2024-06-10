@@ -1,6 +1,6 @@
-// components/MedicGrid.js
+// src/components/MedicGrid.jsx
 import React, { useState, useEffect } from 'react';
-import medicService from '../services/medicService';
+import doctorService from '../services/doctorService';
 import SearchMedicButton from './SearchMedicButton';
 
 const MedicGrid = () => {
@@ -10,9 +10,9 @@ const MedicGrid = () => {
   useEffect(() => {
     const fetchMedics = async () => {
       try {
-        const medicsData = await medicService.getAllMedics();
+        const medicsData = await doctorService.getAllDoctors();
         setMedics(medicsData);
-        setFilteredMedics(medicsData); // Inicialmente, mostrar todos los medics
+        setFilteredMedics(medicsData); // Inicialmente, mostrar todos los médicos
       } catch (error) {
         console.error('Error fetching medics:', error);
       }

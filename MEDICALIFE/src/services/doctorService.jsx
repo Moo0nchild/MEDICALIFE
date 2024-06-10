@@ -1,13 +1,14 @@
+// src/services/doctorService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/doctors';
+const API_URL = 'http://localhost:5000/api/medics';
 
-const getAllMedics = async () => {
+const getAllDoctors = async () => {
   try {
     const response = await axios.get(API_URL);
     return response.data;
   } catch (error) {
-    console.error('Error fetching medics:', error);
+    console.error('Error fetching doctors:', error);
     throw error;
   }
 };
@@ -31,6 +32,6 @@ const addDoctor = async (doctor) => {
 };
 
 export default {
-  getAllMedics,
+  getAllDoctors,
   addDoctor,
 };

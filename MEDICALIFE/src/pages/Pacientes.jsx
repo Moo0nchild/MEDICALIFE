@@ -5,7 +5,7 @@ import PatientGrid from '../components/PatientGrid';
 import {Header} from '../health/components/Header';
 import Box from '@mui/material/Box';
 
-export const PageOne = () => {
+export const Pacientes = () => {
     const [patients, setPatients] = useState([]);
 
     const addPatient = (patient) => {
@@ -15,7 +15,6 @@ export const PageOne = () => {
         <>
         <Box sx={{ display: 'flex' }}>
             <Header/>
-
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
               <div>
                 <h1>AGREGAR PACIENTE</h1>
@@ -29,5 +28,5 @@ export const PageOne = () => {
     )
 }
 
-export default PageOne;
+export default Pacientes;
 

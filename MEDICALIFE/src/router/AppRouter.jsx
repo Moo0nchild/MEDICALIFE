@@ -1,17 +1,25 @@
-import {Router, Route, Routes, Navigate } from 'react-router-dom';
+import {Route, Routes, Navigate } from 'react-router-dom';
 import {Home} from '../health/pages/Home';
-import {PageOne} from '../pages/PageOne';
-import {PageTwo} from '../pages/PageTwo';
-import {PageThre} from '../pages/PageThre';
+import {Pacientes} from '../pages/Pacientes';
+import {Medicos} from '../pages/Medicos';
+import {CitasMedicas} from '../pages/CitasMedicas';
+import {Especialidades} from '../pages/Especialidades';
+import {Usuarios} from '../pages/Usuarios';
+import {Reportes} from '../pages/Reportes';
+import Login from '../auth/Login';
+
 export const AppRouter = () => {
     return (
         <Routes>
-            <Route path='/login' element={<h1>Este es el login</h1>}/>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/PageOne' element={<PageOne/>}/>
-            <Route path='/PageTwo' element={<PageTwo/>}/>
-            <Route path='/PageThre' element={<PageThre/>}/>
-            <Route path='/*' element={ <Navigate to='/home'/> }/>
+            <Route path='/home' element={<Home/>}/>
+            <Route path='/' element={<Login/>}/>
+            <Route path='/pacientes' element={<Pacientes/>}/>
+            <Route path='/medicos' element={<Medicos/>}/>
+            <Route path='/citasMedicas' element={<CitasMedicas/>}/>
+            <Route path='/especialidades' element={<Especialidades/>}/>
+            <Route path='/usuarios' element={<Usuarios/>}/>
+            <Route path='/reportes' element={<Reportes/>}/>
+            <Route path='/*' element={ <Navigate to='/'/> }/>
         </Routes>
     )
 }

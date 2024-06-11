@@ -17,7 +17,12 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -226,7 +231,7 @@ export const Header = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/PageOne")}}>
+          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/pacientes")}}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -241,9 +246,109 @@ export const Header = () => {
                   justifyContent: 'center',
                 }}
               >
-                <InboxIcon />
+                <PeopleAltIcon />
               </ListItemIcon>
-              <ListItemText primary='Page One' sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary='Pacientes' sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/medicos")}}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <MedicalInformationIcon />
+              </ListItemIcon>
+              <ListItemText primary='Médicos' sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/citasMedicas")}}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <CalendarMonthIcon />
+              </ListItemIcon>
+              <ListItemText primary='Citas médicas' sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/especialidades")}}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <LocalHospitalIcon />
+              </ListItemIcon>
+              <ListItemText primary='Especialidades' sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/usuarios")}}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <ManageAccountsIcon />
+              </ListItemIcon>
+              <ListItemText primary='Usuarios' sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/reportes")}}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <AssessmentIcon />
+              </ListItemIcon>
+              <ListItemText primary='Reportes' sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
         </List>

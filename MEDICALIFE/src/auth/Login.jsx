@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,7 +13,10 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from "react-router-dom";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Snackbar from '@mui/material/Snackbar';
+import {Home} from '../health/pages/Home';
 
 function Copyright(props) {
   return (
@@ -26,19 +30,25 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
-export default function SignInSide() {
-    const navigate = useNavigate();
-    const handleSubmit = (event) => {
+export default function Login() {
+    const [open, setOpen] = React.useState(false);
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            usuario: data.get('usuario'),
-            password: data.get('password'),
-        });
+        const datos = { usuario: data.get('usuario'), password: data.get('password') };
+        try {
+            const response = await axios.post('http://localhost:5000/api/auth/login', datos);
+            console.log(response);
+            if (response.data.message === 'Inicio de sesión exitoso') {
+                <Home user={datos}/>
+            } else {
+                setOpen(true);
+            }
+        } catch (error) {
+            setOpen(true);
+        }
     };
 
     return (
@@ -56,7 +66,15 @@ export default function SignInSide() {
                             <TextField margin="normal" required fullWidth id="usuario" label="Usuario" name="usuario" autoComplete="usuario" autoFocus />
                             <TextField margin="normal" required fullWidth name="password" label="Contraseña" type="password" id="password" autoComplete="current-password" />
                             <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Acuérdate de mí" />
-                            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={()=>{navigate("/home")}}>INGRESA</Button>
+                            <Box sx={{ display: "grid", gap: "1rem" }}>
+                                <Snackbar open={open} autoHideDuration={3000} onClose={() => setOpen(false)}>  
+                                    <Alert severity="error">
+                                        <AlertTitle>Error</AlertTitle>
+                                        Error al iniciar sesión. Por favor, inténtelo de nuevo
+                                    </Alert>
+                                </Snackbar>
+                            </Box>
+                            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>INGRESA</Button>
                             <Grid container>
                                 <Grid item xs>
                                     <Link href="#" variant="body2">¿Has olvidado tu contraseña?</Link>

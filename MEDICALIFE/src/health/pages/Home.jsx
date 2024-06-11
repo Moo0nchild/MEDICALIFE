@@ -1,5 +1,5 @@
 import MainLayout from '../layout/MainLayout';
-export const Home = () => {
+export const Home = (datos) => {
     return (
         <MainLayout/>
     )

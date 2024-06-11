@@ -1,7 +1,7 @@
 // src/components/MedicGrid.jsx
 import React, { useState, useEffect } from 'react';
 import doctorService from '../services/doctorService';
-import SearchMedicButton from './SearchMedicButton';
+
 
 const MedicGrid = () => {
   const [medics, setMedics] = useState([]);
@@ -34,11 +34,11 @@ const MedicGrid = () => {
   return (
     <div>
       <h2>Lista de Médicos</h2>
-      <SearchMedicButton onSearch={handleSearch} />
+      
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Cedula</th>
             <th>Nombre</th>
             <th>Especialidad</th>
           </tr>
@@ -46,9 +46,9 @@ const MedicGrid = () => {
         <tbody>
           {filteredMedics.map((medic, index) => (
             <tr key={index}>
-              <td>{medic.id}</td>
-              <td>{medic.nombre}</td>
-              <td>{medic.especialidad}</td>
+              <td>{medic.DoctorID}</td>
+              <td>{medic.Nombre}</td>
+              <td>{medic.Especialidad}</td>
             </tr>
           ))}
         </tbody>

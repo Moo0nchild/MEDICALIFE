@@ -35,7 +35,7 @@ const AddDoctorForm = () => {
       <h2>Añadir Médico</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="id">ID:</label>
+          <label htmlFor="id">Cedula:</label>
           <input type="text" id="id" name="id" value={doctorData.id} onChange={handleChange} required />
         </div>
         <div>

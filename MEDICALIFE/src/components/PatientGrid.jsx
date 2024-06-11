@@ -1,24 +1,40 @@
-import React, { useState } from 'react';
+// components/PatientGrid.js
+import React, { useState, useEffect } from 'react';
+import patientService from '../services/patientService';
+import SearchPatientButton from './SearchPatientButton';
 
-const PatientGrid = ({ patients, onUpdatePatient, onDeletePatient }) => {
-  const [editingPatient, setEditingPatient] = useState(null);
+const PatientGrid = () => {
+  const [patients, setPatients] = useState([]);
+  const [filteredPatients, setFilteredPatients] = useState([]);
 
-  const handleEdit = (patient) => {
-    setEditingPatient(patient);
-  };
+  useEffect(() => {
+    const fetchPatients = async () => {
+      try {
+        const patientsData = await patientService.getAllPatients();
+        setPatients(patientsData);
+        setFilteredPatients(patientsData); // Inicialmente, mostrar todos los pacientes
+      } catch (error) {
+        console.error('Error fetching patients:', error);
+      }
+    };
 
-  const handleUpdate = (updatedPatient) => {
-    onUpdatePatient(updatedPatient);
-    setEditingPatient(null);
-  };
+    fetchPatients();
+  }, []);
 
-  const handleDelete = (id) => {
-    onDeletePatient(id);
+  const handleSearch = (searchText) => {
+    const lowercasedFilter = searchText.toLowerCase();
+    const filteredData = patients.filter(patient =>
+      Object.keys(patient).some(key =>
+        String(patient[key]).toLowerCase().includes(lowercasedFilter)
+      )
+    );
+    setFilteredPatients(filteredData);
   };
 
   return (
     <div>
       <h2>Lista de Pacientes</h2>
+      <SearchPatientButton onSearch={handleSearch} />
       <table>
         <thead>
           <tr>
@@ -30,97 +46,23 @@ const PatientGrid = ({ patients, onUpdatePatient, onDeletePatient }) => {
             <th>Dirección</th>
             <th>Teléfono</th>
             <th>Email</th>
-            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {patients.map((patient, index) => (
+          {filteredPatients.map((patient, index) => (
             <tr key={index}>
-              <td>{patient.cedula}</td>
-              <td>{patient.nombre}</td>
-              <td>{patient.apellido}</td>
-              <td>{patient.fechaNacimiento}</td>
-              <td>{patient.genero}</td>
-              <td>{patient.direccion}</td>
-              <td>{patient.telefono}</td>
-              <td>{patient.email}</td>
-              <td>
-                <button onClick={() => handleEdit(patient)}>Editar</button>
-                <button onClick={() => handleDelete(patient.id)}>Eliminar</button>
-              </td>
+              <td>{patient.UserID}</td>
+              <td>{patient.Nombre}</td>
+              <td>{patient.Apellido}</td>
+              <td>{patient.FechaNacimiento}</td>
+              <td>{patient.Genero}</td>
+              <td>{patient.Direccion}</td>
+              <td>{patient.Telefono}</td>
+              <td>{patient.Email}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      {editingPatient && (
-        <EditPatientForm
-          patient={editingPatient}
-          onUpdatePatient={handleUpdate}
-          onClose={() => setEditingPatient(null)}
-        />
-      )}
-    </div>
-  );
-};
-
-const EditPatientForm = ({ patient, onUpdatePatient, onClose }) => {
-  const [cedula, setCedula] = useState(patient.cedula);
-  const [nombre, setNombre] = useState(patient.nombre);
-  const [apellido, setApellido] = useState(patient.apellido);
-  const [fechaNacimiento, setFechaNacimiento] = useState(patient.fechaNacimiento);
-  const [genero, setGenero] = useState(patient.genero);
-  const [direccion, setDireccion] = useState(patient.direccion);
-  const [telefono, setTelefono] = useState(patient.telefono);
-  const [email, setEmail] = useState(patient.email);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onUpdatePatient({ ...patient, cedula, nombre, apellido, fechaNacimiento, genero, direccion, telefono, email });
-  };
-
-  return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Cédula:</label>
-          <input type="text" value={cedula} onChange={(e) => setCedula(e.target.value)} required />
-        </div>
-        <div>
-          <label>Nombre:</label>
-          <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
-        </div>
-        <div>
-          <label>Apellido:</label>
-          <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} required />
-        </div>
-        <div>
-          <label>Fecha de Nacimiento:</label>
-          <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} required />
-        </div>
-        <div>
-          <label>Género:</label>
-          <select value={genero} onChange={(e) => setGenero(e.target.value)} required>
-            <option value="">Seleccionar</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-            <option value="Otro">Otro</option>
-          </select>
-        </div>
-        <div>
-          <label>Dirección:</label>
-          <input type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)} required />
-        </div>
-        <div>
-          <label>Teléfono:</label>
-          <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} required />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <button type="submit">Actualizar Paciente</button>
-        <button type="button" onClick={onClose}>Cancelar</button>
-      </form>
     </div>
   );
 };

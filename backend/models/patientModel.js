@@ -1,43 +1,44 @@
-// models/patientModel.js
+// models/PatientModel.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
 const Patient = sequelize.define('Patient', {
-  cedula: {
+  UserID: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    allowNull: false, 
+  },
+  Nombre: {
     type: DataTypes.STRING,
     allowNull: false,
-    primaryKey: true
   },
-  nombre: {
+  Apellido: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
-  apellido: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  fechaNacimiento: {
+  FechaNacimiento: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
   },
-  genero: {
-    type: DataTypes.STRING,
-    allowNull: false
+  Genero: {
+    type: DataTypes.CHAR(1),
+    allowNull: false,
   },
-  direccion: {
+  Direccion: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
-  telefono: {
-    type: DataTypes.STRING,
-    allowNull: false
+  Telefono: {
+    type: DataTypes.STRING(15),
+    allowNull: false,
   },
-  email: {
+  Email: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true,
   }
 }, {
-  tableName: 'patients'
+  tableName: 'Usuarios',
 });
 
 module.exports = Patient;

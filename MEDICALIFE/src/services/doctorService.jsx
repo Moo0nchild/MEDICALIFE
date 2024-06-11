@@ -1,33 +1,30 @@
+// src/services/doctorService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/patients';
+const API_URL = 'http://localhost:5000/api/medics';
 
-const getAllPatients = async () => {
+const getAllDoctors = async () => {
   try {
     const response = await axios.get(API_URL);
     return response.data;
   } catch (error) {
-    console.error('Error fetching patients:', error);
+    console.error('Error fetching doctors:', error);
     throw error;
   }
 };
 
-const addPatient = async (patient) => {
+const addDoctor = async (doctor) => {
   try {
-    const response = await axios.post(API_URL, patient);
-    return response.data; // Devuelve los datos del paciente creado si la solicitud fue exitosa
+    const response = await axios.post(API_URL, doctor);
+    return response.data;
   } catch (error) {
-    
     if (error.response) {
-      
       console.error('Error:', error.response.data);
-      throw new Error('Error al agregar paciente: ' + error.response.data.message);
+      throw new Error('Error al agregar médico: ' + error.response.data.message);
     } else if (error.request) {
-      
       console.error('No se recibió respuesta del servidor');
       throw new Error('No se recibió respuesta del servidor');
     } else {
-      
       console.error('Error al configurar la solicitud:', error.message);
       throw new Error('Error al configurar la solicitud: ' + error.message);
     }
@@ -35,6 +32,6 @@ const addPatient = async (patient) => {
 };
 
 export default {
-  getAllPatients,
-  addPatient,
+  getAllDoctors,
+  addDoctor,
 };

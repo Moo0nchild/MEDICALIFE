@@ -5,7 +5,6 @@ const sequelize = require('../config/db');
 const Medic = sequelize.define('Medic', {
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true
   },
   nombre: {
@@ -17,7 +16,7 @@ const Medic = sequelize.define('Medic', {
     allowNull: false
   }
 }, {
-  tableName: 'medics'
+  tableName: 'Medicos'
 });
 
 module.exports = Medic;

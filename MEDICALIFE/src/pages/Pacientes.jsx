@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import AddPatientButton from '../components/AddPatientButton';
-import SearchPatientButton from '../components/SearchPatientButton';
 import PatientGrid from '../components/PatientGrid';
 import {Header} from '../health/components/Header';
 import Box from '@mui/material/Box';
@@ -19,7 +18,7 @@ export const Pacientes = () => {
               <div>
                 <h1>AGREGAR PACIENTE</h1>
                 <AddPatientButton onAddPatient={addPatient} />
-                <SearchPatientButton />
+                
                 <PatientGrid patients={patients} />
               </div>
             </Box>

@@ -1,20 +1,30 @@
 // controllers/medicController.js
-const Medic = require('../models/medicModel');
+const sequelize = require('../config/db');
 
-exports.createMedic = async (req, res) => {
+// Obtener todos los médicos
+exports.getAllMedics = async (req, res) => {
   try {
-    const medic = await Medic.create(req.body);
-    res.status(201).json(medic);
+    const [results, metadata] = await sequelize.query('SELECT * FROM Medicos');
+    res.json(results);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Error fetching medics:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 };
 
-exports.getAllMedics = async (req, res) => {
+// Agregar un nuevo médico
+exports.addMedic = async (req, res) => {
+  const { id, nombre, especialidad } = req.body;
   try {
-    const medics = await Medic.findAll();
-    res.status(200).json(medics);
+    const [results, metadata] = await sequelize.query(
+      'INSERT INTO Medicos (id, nombre, especialidad) VALUES (:id, :nombre, :especialidad)',
+      {
+        replacements: { id, nombre, especialidad },
+      }
+    );
+    res.status(201).json({ id, nombre, especialidad });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Error adding medic:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 };

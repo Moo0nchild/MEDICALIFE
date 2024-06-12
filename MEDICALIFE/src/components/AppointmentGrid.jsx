@@ -9,16 +9,17 @@ const AppointmentGrid = ({ appointments }) => {
           <th>Paciente</th>
           <th>Médico</th>
           <th>Fecha y Hora</th>
-          <th>Descripción</th>
+          
+          <th>Estado</th>
         </tr>
       </thead>
       <tbody>
         {appointments.map((appointment, index) => (
           <tr key={index}>
-            <td>{appointment.patientName}</td>
-            <td>{appointment.doctorName}</td>
+            <td>{appointment.UserName}</td>
+            <td>{appointment.DoctorName}</td>
             <td>{new Date(appointment.FechaHoraCita).toLocaleString()}</td>
-            <td>{appointment.description}</td>
+            <td>{appointment.Estado}</td>
           </tr>
         ))}
       </tbody>

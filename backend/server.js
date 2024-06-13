@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./config/db');
+const bcrypt = require('bcrypt');
 
 const patientRoutes = require('./routes/patientRoutes');
 const medicRoutes = require('./routes/medicRoutes');
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
+const port = 5000; 
 
 app.use('/api', patientRoutes);
 app.use('/api', medicRoutes);

@@ -1,4 +1,3 @@
-// models/citaModel.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
@@ -30,6 +29,14 @@ const Cita = sequelize.define('Cita', {
   },
   Estado: {
     type: DataTypes.STRING,
+    allowNull: true
+  },
+  DoctorName: {
+    type: DataTypes.STRING(45),
+    allowNull: true
+  },
+  UserName: {
+    type: DataTypes.STRING(45),
     allowNull: true
   }
 }, {

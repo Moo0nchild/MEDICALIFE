@@ -17,7 +17,7 @@ exports.addMedic = async (req, res) => {
   const { id, nombre, especialidad } = req.body;
   try {
     const [results, metadata] = await sequelize.query(
-      'INSERT INTO Medicos (id, nombre, especialidad) VALUES (:id, :nombre, :especialidad)',
+      'INSERT INTO Medicos (DoctorID, nombre, especialidad) VALUES (:id, :nombre, :especialidad)',
       {
         replacements: { id, nombre, especialidad },
       }

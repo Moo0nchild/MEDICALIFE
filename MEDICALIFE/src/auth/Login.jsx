@@ -16,8 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Snackbar from '@mui/material/Snackbar';
-import {Home} from '../health/pages/Home';
-
+import { useNavigate } from 'react-router-dom';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -33,16 +32,17 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login() {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const datos = { usuario: data.get('usuario'), password: data.get('password') };
         try {
             const response = await axios.post('http://localhost:5000/api/auth/login', datos);
-            console.log(response);
             if (response.data.message === 'Inicio de sesión exitoso') {
-                <Home user={datos}/>
+                navigate('/pacientes');
             } else {
                 setOpen(true);
             }

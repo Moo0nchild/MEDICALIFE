@@ -21,7 +21,7 @@ const Administrador = sequelize.define('Administrador', {
     allowNull: false,
     unique: true
   },
-  Contraseña: {
+  Contrasena: {
     type: DataTypes.STRING,
     allowNull: false
   },

@@ -8,7 +8,7 @@ function preventDefault(event) {
     event.preventDefault();
 }
 
-export const MainLayout = () => {
+export const MainLayout = (datos) => {
     return (
         <>
         <Box sx={{ display: 'flex' }}>
@@ -18,7 +18,7 @@ export const MainLayout = () => {
                 <br />
                 <br />
                 <React.Fragment>
-                    <h1>Recent Deposits</h1>
+                    <h1>{datos.usuario}</h1>
                     <Typography component="p" variant="h4">
                         $3,024.00
                     </Typography>

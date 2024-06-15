@@ -76,9 +76,6 @@ export default function Login() {
                             </Box>
                             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>INGRESA</Button>
                             <Grid container>
-                                <Grid item xs>
-                                    <Link href="#" variant="body2">¿Has olvidado tu contraseña?</Link>
-                                </Grid>
                                 <Grid item>
                                     <Link href="#" variant="body2">{"¿No tienes una cuenta? Inscribirse"}</Link>
                                 </Grid>

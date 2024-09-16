@@ -1,14 +1,8 @@
-Para descargar el proyecto git clone https://github.com/MiguelUPC/MEDICALIFE.git
+# React + Vite
 
-Versionamiento
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-"react": "^20.12.2",
-"react": "^18.2.0",
-"material": "^5.15.19",
-"vite": "^5.2.0"
-"npm": "^6.14.18"
+Currently, two official plugins are available:
 
-pararse en la ruta 
-
-ruta pc/MEDICALIFE/MEDICALIFE npm i
-ruta pc/MEDICALIFE/MEDICALIFE npm run dev
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
